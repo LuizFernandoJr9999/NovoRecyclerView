@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.titulo.setText(filme.getTituloFilme());
         holder.genero.setText(filme.getGenero());
         holder.ano.setText(filme.getAno());
+
         //holder.titulo.setText("Teste de Titulo");
         //holder.ano.setText("1017");
         //holder.genero.setText("Comédia");

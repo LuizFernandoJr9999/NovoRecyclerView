@@ -1,6 +1,7 @@
 package br.com.java.cursoandroid.novorecyclerview.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,19 +19,22 @@ import java.util.List;
 import br.com.java.cursoandroid.novorecyclerview.R;
 import br.com.java.cursoandroid.novorecyclerview.RecyclerItemClickListener;
 import br.com.java.cursoandroid.novorecyclerview.adapter.Adapter;
+import br.com.java.cursoandroid.novorecyclerview.databinding.ActivityMainBinding;
 import br.com.java.cursoandroid.novorecyclerview.model.Filme;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    ActivityMainBinding conteudo;
+
+    //private RecyclerView recyclerView;
     private List<Filme> listaFilmes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        recyclerView = findViewById(R.id.recyclerView);
+        //setContentView(R.layout.activity_main);
+        conteudo = DataBindingUtil.setContentView(this , R.layout.activity_main);
+        //recyclerView = findViewById(R.id.recyclerView);
 
         //Listagem de filmes
         this.criarFilmes();
@@ -40,16 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
         //Configurar Recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this , LinearLayout.VERTICAL));
-        recyclerView.setAdapter(adapter);
+        conteudo.recyclerView.setLayoutManager(layoutManager);
+        conteudo.recyclerView.setHasFixedSize(true);
+        conteudo.recyclerView.addItemDecoration(new DividerItemDecoration(this , LinearLayout.VERTICAL));
+        conteudo.recyclerView.setAdapter(adapter);
 
         //evento de click
-        recyclerView.addOnItemTouchListener(
+        conteudo.recyclerView.addOnItemTouchListener(
             new RecyclerItemClickListener(
                     getApplicationContext(),
-                    recyclerView,
+                    conteudo.recyclerView,
                     new RecyclerItemClickListener.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, int position) {

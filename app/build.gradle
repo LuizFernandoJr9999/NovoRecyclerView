@@ -5,6 +5,10 @@ plugins {
 android {
     compileSdk 33
 
+    dataBinding {
+        enabled true
+    }
+
     defaultConfig {
         applicationId "br.com.java.cursoandroid.novorecyclerview"
         minSdk 21
